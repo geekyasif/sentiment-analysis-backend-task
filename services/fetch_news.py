@@ -9,14 +9,9 @@ def fetch_news(search):
     url = f'{NEWS_APP_END_POINT}/everything'
     res = requests.get(url, params=params)
     
-    # Check if the request was successful
     if res.status_code != 200:
         return {"error": "Failed to fetch news", "status_code": res.status_code}
-    
-    # Extract the news data from the response
     news = res.json()
-
-    # Map news articles to a list of dictionaries with 'url' and 'content'
     # data = [{"url": new['url'], "content": new['content']} for new in news['articles']]  # Assuming 'articles' is the key in the response
     
     return news

@@ -37,4 +37,4 @@ def search_news():
 
 
 if __name__ == "__main__":
-    app.run(debug)  # Enables auto-restart on code changes
+    app.run(debug) 
