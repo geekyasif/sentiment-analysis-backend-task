@@ -4,7 +4,6 @@ from textblob import TextBlob
 
 def analyse_sentiment(text):
     try: 
-        print(text)
         nlp = spacy.load("en_core_web_sm")
         doc = nlp(text)
         blob = TextBlob(doc.text)

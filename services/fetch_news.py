@@ -16,9 +16,11 @@ def fetch_news(page = 1, pageSize = 10, search=""):
 
         if res.status_code != 200:
             return {"error": "Failed to fetch news", "status_code": res.status_code}
+        
         news  = res.json()
 
-        return news['articles']
+        return {"articles": news['articles'], "totalResults": news["totalResults"]}
+    
     except Exception as e:
         print(str(e))
         print(traceback.format_exc())
