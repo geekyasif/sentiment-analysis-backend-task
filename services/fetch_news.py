@@ -15,7 +15,6 @@ def scrape_article_content(url):
 
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Try extracting the main content (adjust selectors based on structure)
         paragraphs = soup.find_all("p")  
         full_content = "\n".join([p.get_text() for p in paragraphs])
 

@@ -17,13 +17,13 @@ def news():
         if not search: 
             return jsonify({"success": False , "message": "Search parameter is required!"}), 400
         
-        #Fetch news
+        # Fetching news
         news = fetch_news(page, pageSize, search)
 
         if "error" in news:
             return jsonify({"success": False , "message": "Something went wrong while fetching the news!"}) , 500
         
-        # do sentiment analysis
+        # Doing sentiment analysis
         if len(news['articles']) == 0 or news['totalResults'] == 0:
             return jsonify({"success": True, "message": "No News Found!", "data": {"articles": [], "total": 0}}), 200
 
@@ -40,7 +40,7 @@ def news():
                 "sentiment": analysed_news_sentiment
             })
 
-        #return the response
+        # Return the response
         return jsonify({
             "success": True,
             "message": "Search News and Sentiment Analysis Successfully",
