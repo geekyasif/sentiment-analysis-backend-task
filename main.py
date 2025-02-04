@@ -45,7 +45,6 @@ def news():
             "success": True,
             "message": "Search News and Sentiment Analysis Successfully",
             "data": {
-                    "news": news,
                     "articles": analysed_data,
                     "total": news['totalResults'],
                 }
