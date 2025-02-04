@@ -21,4 +21,5 @@ def fetch_news(page = 1, pageSize = 10, search=""):
         return news['articles']
     except Exception as e:
         print(str(e))
-        return traceback.format_exc()
+        print(traceback.format_exc())
+        return {"error": 'Failed to fetch news', "status_code": 500}

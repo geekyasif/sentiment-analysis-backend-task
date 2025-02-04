@@ -19,22 +19,30 @@ def news():
         
         #Fetch news
         news = fetch_news(page, pageSize, search)
+
+        if "error" in news:
+            return jsonify({"message": "Something went wrong while fetching the news!"}) , 500
         
         # do sentiment analysis
         if len(news) == 0:
             return jsonify({"message": "No News Found!"}), 404
 
         analysed_data = []
+
         for article in news:
+        
             analysed_news_sentiment = analyse_sentiment(article['description'])
+            if "error" in analysed_news_sentiment:
+                analysed_news_sentiment = "Error"
+
             analysed_data.append({
                 "url": article["url"], 
                 "sentiment": analysed_news_sentiment
             })
-        
+
         #return the response
         return jsonify({
-            "message": "Search Successfully",
+            "message": "Search News and Sentiment Analysis Successfully",
             "data": analysed_data
         }), 200
     

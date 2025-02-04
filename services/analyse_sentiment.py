@@ -19,4 +19,6 @@ def analyse_sentiment(text):
 
         return sentiment_label
     except Exception as e:
-        return traceback.format_exc()
+        print(str(e))
+        print(traceback.format_exc())
+        return {"error": "Something went wrong!", "status_code": 500}
