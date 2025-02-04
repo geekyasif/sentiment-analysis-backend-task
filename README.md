@@ -14,3 +14,8 @@ run the project
 python3 main.py 
 or
 flask --app main.py --debug run
+flask --app main.py run
+
+pm2 start wsgi.py --name sentiment-api --interpreter python3
+pm2 save
+pm2 startup
