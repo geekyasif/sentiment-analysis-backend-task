@@ -25,7 +25,7 @@ def news():
         
         # do sentiment analysis
         if len(news['articles']) == 0 or news['totalResults'] == 0:
-            return jsonify({"message": "No News Found!"}), 404
+            return jsonify({"success": True, "message": "No News Found!", "data": {"articles": [], "total": 0}}), 200
 
         analysed_data = []
 
